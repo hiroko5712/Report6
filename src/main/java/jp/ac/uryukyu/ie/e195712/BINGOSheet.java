@@ -11,11 +11,14 @@ import java.util.Random;
  * 3. B列には1~15の数字、I列には16~30のような本来のルールは無視する。どこにどの数字が入ってもいいものとする。
  */
 
-public class BINGOSheet {
+class BINGOSheet {
     private int number = 1;  // NumberListに入れる数字。int型の1から始まる。
     // ユニットテストしたい
     private int indexLength = 75; // リストの要素数を記録する変数。最初に選べるインデックスは0~74。
     private int count = 0;
+    private ArrayList<Integer> NumberList = new ArrayList<Integer>();
+    private int[][] sheet = new int[5][5];
+
 
     /**
      * ビンゴシートを作成するメソッド。
@@ -24,16 +27,13 @@ public class BINGOSheet {
      * 3. NumberListの中から、numで指定されたインデックスの要素を、sheet(5×5の2次元配列)に入れていく。
      * 4. sheetをビンゴカードっぽくなるように表示する。
      */
-    public void Sheet(){
-        ArrayList<Integer> NumberList = new ArrayList<Integer>();
+    public int[][] IncompleteSheet() {
         for (int a = 0; a < 75; a++) {
             NumberList.add(number);
             number++;
         }
 
-        int[][] sheet = new int[5][5];
         Random rand = new Random();
-
 
         for (int height = 0; height < sheet.length; height++) {
             int num = rand.nextInt(indexLength); // 最初に選べるインデックスは0~74。indexLengthは減少していく。
@@ -49,16 +49,15 @@ public class BINGOSheet {
             }
             count++;
         }
-        // System.out.println(Arrays.deepToString(sheet));
-
-        //ビンゴカードを表示する。
-        for (int b = 0; b < sheet.length; b++) {
-            System.out.println(" ");  // 改行してほしいのでprintlnを使用。(横に5つ数字を並べた後改行したい。)
-            for (int c = 0; c < sheet.length; c++) {
-                System.out.print(sheet[b][c] + " ");  // printlnでは改行してしまうため、printを使う。(横に5つ数字を並べたい。)
-            }
-        }
-
+        System.out.println(Arrays.deepToString(sheet));
+        return sheet;
     }
+
+    /*
+    public int[][] getSheet(){
+        return this.sheet;
+    }
+
+     */
 
 }

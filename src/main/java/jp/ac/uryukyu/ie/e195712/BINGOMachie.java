@@ -8,7 +8,7 @@ import java.util.Random;
  * 1度選んだ数字は選ばないようにする。
  */
 class BINGOMachine {
-    ArrayList<Integer> NumberList = new ArrayList<Integer>();
+    private ArrayList<Integer> NumberList2 = new ArrayList<Integer>();
     private int number = 1;  // NumberListに入れる数字。int型の1から始まる。]
     private int indexLength = 75;
 
@@ -19,17 +19,23 @@ class BINGOMachine {
      *
      * @return int型。NumberListのnum番目にある数字。
      */
-    public int PickedNumber() {
+    int PickedNumber() {
         for (int a = 0; a < 75; a++) {
-            NumberList.add(number);
+            NumberList2.add(number);
             number++;
         }
         Random rand = new Random();
         int num = rand.nextInt(indexLength);
-        NumberList.remove(num);  // 同じ数字を選んではいけないので、使った数字はリストから削除する。
+        int getNum = NumberList2.get(num);
+        NumberList2.remove(num);  // 同じ数字を選んではいけないので、使った数字はリストから削除する。
         indexLength--;
 
-        return NumberList.get(num);
+        return getNum;
     }
+    int getNumber(){
+        return PickedNumber();
+    }
+
+
 
 }

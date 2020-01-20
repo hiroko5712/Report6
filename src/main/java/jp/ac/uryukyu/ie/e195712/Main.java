@@ -1,12 +1,17 @@
 package jp.ac.uryukyu.ie.e195712;
 
+import java.util.Random;
+
+
 public class Main {
     public static void main(String[] args){
-        BINGOSheet card = new BINGOSheet();
-        BINGOMachine number = new BINGOMachine();
+        BINGOSystem card = new BINGOSystem();
 
-        card.Sheet();
+        card.ShowSheet();
         System.out.println(" ");
-        System.out.println(number.PickedNumber());
+        card.Compare();
+
+        System.out.println(" ");
+        System.out.println(card.Compare());
     }
 }
