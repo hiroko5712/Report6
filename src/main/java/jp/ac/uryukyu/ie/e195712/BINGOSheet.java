@@ -49,15 +49,9 @@ class BINGOSheet {
             }
             count++;
         }
-        System.out.println(Arrays.deepToString(sheet));
         return sheet;
     }
 
-    /*
-    public int[][] getSheet(){
-        return this.sheet;
-    }
 
-     */
 
 }
